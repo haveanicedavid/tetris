@@ -1,8 +1,10 @@
-const chai = require('chai');
-const assert = chai.assert;
+var assert   = require('chai').assert;
 
-describe('my test suite', function () {
-  it('should work', function () {
-    assert(true);
-  });
-});
+require('./board_test.js');
+require('./block_test.js');
+
+// describe('my test suite', function () {
+//   it('should work', function () {
+//     assert(true);
+//   });
+// });
