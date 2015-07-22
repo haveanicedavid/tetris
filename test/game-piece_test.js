@@ -6,16 +6,24 @@ describe('Game Pieces', function() {
  
   it('Square piece can move down', function () {
     var piece = new squarePiece();
-    assert.equal(piece.topLeft.row, 0);
+    assert.equal(piece.topLeftOrigin.row, 0);
     piece.moveDown();
-    assert.equal(piece.topLeft.row, 1);
+    assert.equal(piece.topLeftOrigin.row, 1);
   });
 
   it('Square piece can move left', function () {
     var piece = new squarePiece();
-    assert.equal(piece.topLeft.col, 4);
+    assert.equal(piece.topLeftOrigin.col, 4);
     piece.moveLeft();
-    assert.equal(piece.topLeft.col, 3);
+    assert.equal(piece.topLeftOrigin.col, 3);
+  });
+
+
+  it('l piece can rotate', function () {
+    var piece = new squarePiece();
+    assert.equal(piece.topLeftOrigin.col, 4);
+    piece.moveLeft();
+    assert.equal(piece.topLeftOrigin.col, 3);
   });
 
 });

@@ -9,7 +9,7 @@ var lPiece = require('../lib/game-pieces/l-piece');
 
 describe('The game runner', function() {
   
-  it('exists and has a board', function () {
+  it('when a game is created it starts with an empty board', function () {
     var game = new Game();
     assert(game);
     assert(game.board.setBoard);
@@ -24,6 +24,7 @@ describe('The game runner', function() {
     assert.equal(game.board.setBoard[0][5], 1);
     assert.equal(game.board.setBoard[1][4], 1);
     assert.equal(game.board.setBoard[1][5], 1);
+    assert.notEqual(game.board.setBoard[1][6], 1);
   });
 
   it('draws an l piece', function () {
@@ -34,6 +35,14 @@ describe('The game runner', function() {
     assert.equal(game.board.setBoard[1][5], 1);
     assert.equal(game.board.setBoard[2][5], 1);
     assert.equal(game.board.setBoard[2][4], 1);
+  });
+
+  it('only draws 1s', function () {
+    var game = new Game();
+    var piece = new lPiece();
+    game.board[0][4] = 1;
+    assert.equal(game.board.setBoard[0][4], 1);
+    game.board.draw(piece);
   });
 
   it('draws a square piece after moving down', function () {
