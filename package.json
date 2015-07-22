@@ -24,6 +24,7 @@
     "chai": "^3.2.0",
     "css-loader": "^0.15.5",
     "mocha": "^2.2.5",
+    "mocha-jshint": "^2.2.3",
     "mocha-loader": "^0.7.1",
     "node-libs-browser": "^0.5.2",
     "node-sass": "^3.2.0",

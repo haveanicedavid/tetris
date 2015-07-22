@@ -1,8 +1,11 @@
 var assert = require('chai').assert;
-var Board  = require('../lib/board');
 var Game   = require('../lib/game');
+
+// TODO: move the piece elements into the Game.js file, in a function that randomly generates pieces
 var squarePiece = require('../lib/game-pieces/square-piece');
 var lPiece = require('../lib/game-pieces/l-piece');
+
+// require('../lib/game-pieces'); // This is how to keep all pieces in one folder if we want
 
 describe('The game runner', function() {
   
@@ -15,6 +18,7 @@ describe('The game runner', function() {
   it('draws a square piece', function () {
     var game = new Game();
     var piece = new squarePiece();
+    // var piece = new gamePieces.squarePiece(); // how to call a piece from the conglaborate game-pieces.js
     game.board.draw(piece);
     assert.equal(game.board.setBoard[0][4], 1);
     assert.equal(game.board.setBoard[0][5], 1);
