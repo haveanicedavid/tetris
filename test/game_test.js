@@ -1,17 +1,21 @@
 var assert = require('chai').assert;
 var Board  = require('../lib/board');
-var Game   = require('../lib/game')
+var Game   = require('../lib/game');
+var squarePiece = require('../lib/game-pieces/square-piece');
 
 describe('The game runner', function() {
   
   it('exists and has a board', function () {
-    var bob = new Game();
-    assert(bob);
-    assert(bob.board);
+    var game = new Game();
+    assert(game);
+    assert(game.board.setBoard);
   });
 
-  it('starts', function () {
-    
+  it('draws a square piece', function () {
+    var game = new Game();
+    var piece = new squarePiece();
+    game.board.draw(piece);
+    assert.equal(game.board.setBoard[0][4], 1);
   });
 
   // xit('has a timer', function () {
