@@ -1,5 +1,6 @@
 var assert = require('chai').assert;
 var Board  = require('../lib/board');
+var Piece  = require('../lib/piece');
 
 
 describe('The board', function() {
@@ -8,19 +9,28 @@ describe('The board', function() {
     assert(new Board());
   });
 
-  it('should be an array', function () {
-    var board = new Board();
-    assert(Array.isArray(board.setBoard));
+  it('starts with 16 rows and 10 columns by default', function () {
+    var bob = new Board();
+    assert.equal(bob.rows, 16);
+    assert.equal(bob.cols, 10);
   });
 
-  it('Should have 16 rows and 10 columns', function () {
-    var board = new Board();;
-    assert.equal(board.setBoard[0][0], 0);
-    assert.equal(board.setBoard[15][9], 0);
-    assert.equal(board.setBoard[0].length, 10);
-    assert.equal(board.setBoard.length, 16);
-    assert.notEqual(board.setBoard.length, 15);
-    assert.notEqual(board.setBoard[0], 10);
+  xit('should store new pieces', function () {
+    var board = new Board();
+    var piece = new Piece(board);
+  });
+
+  xit('should know when a row is filled', function () {
+  });
+
+  xit('should know when a row is filled', function () {
+  });
+
+  xit('should tell if a location is occupado', function () {
+  });
+
+
+  xit('should know when a row is filled', function () {
   });
 
 });
