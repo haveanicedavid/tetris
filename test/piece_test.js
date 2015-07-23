@@ -10,7 +10,12 @@ describe('Game Pieces', function() {
     assert(new Piece());
   });
 
-  xit('can move downward', function () {
+  it('can move downward', function () {
+    var p = new Piece(null, 0, 0);
+    // assert.equal(p.xPos, 0);
+    assert.equal(p.yPos, 0);
+    p.moveDown();
+    assert.equal(p.yPos, 1);
   });
 
   xit('can move sidewaze', function () {

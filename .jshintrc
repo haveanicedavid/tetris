@@ -6,7 +6,8 @@
     "describe",
     "it",
     "require",
-    "module"
+    "module",
+    "xit"
   ],
   "browser": true,
   "boss": true,
