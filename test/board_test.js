@@ -9,9 +9,9 @@ describe('The board', function() {
     assert(new Board());
   });
 
-  it('starts with 16 rows and 10 columns by default', function () {
+  it('starts with 20 rows and 10 columns by default', function () {
     var bob = new Board();
-    assert.equal(bob.rows, 16);
+    assert.equal(bob.rows, 20);
     assert.equal(bob.cols, 10);
   });
 
