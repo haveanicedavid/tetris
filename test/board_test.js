@@ -42,7 +42,7 @@ describe('The board', function() {
         new Piece(this, 8, 19),
         new Piece(this, 9, 19)
       );
-    
+
     assert(board.isOccupied(1,19));
     assert(board.isOccupied(6,19));
     board.checkRows();
