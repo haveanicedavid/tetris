@@ -28,7 +28,26 @@ describe('The board', function() {
     assert(!board.isOccupied(0, 4));
   });
 
-  xit('should know when a row is filled', function () {
+  it('should know when a row is filled', function () {
+    var board = new Board();
+    board.pieces.push(
+        new Piece(this, 0, 19),
+        new Piece(this, 1, 19),
+        new Piece(this, 2, 19),
+        new Piece(this, 3, 19),
+        new Piece(this, 4, 19),
+        new Piece(this, 5, 19),
+        new Piece(this, 6, 19),
+        new Piece(this, 7, 19),
+        new Piece(this, 8, 19),
+        new Piece(this, 9, 19)
+      );
+    
+    assert(board.isOccupied(1,19));
+    assert(board.isOccupied(6,19));
+    board.checkRows();
+    assert(!board.isOccupied(1,19));
+    assert(!board.isOccupied(6,19));
   });
 
 
