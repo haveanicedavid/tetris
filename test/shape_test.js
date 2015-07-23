@@ -25,6 +25,11 @@ describe('The Shapes', function() {
     // assert.equal(j.positionRotations, "Testing");
   });
 
+  
+  // it('can tell all of its pieces to move down', function () {
+  //   var j = new jShape();
+  // });
+
   // it('jShape can move down', function () {
   //   var jShape = new Shape().jShape();
   //   jShape.moveDown();

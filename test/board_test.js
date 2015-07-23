@@ -15,22 +15,21 @@ describe('The board', function() {
     assert.equal(bob.cols, 10);
   });
 
-  xit('should store new pieces', function () {
+  it('should store new pieces', function () {
     var board = new Board();
     var piece = new Piece(board);
+    assert.equal(piece.board, board);
+  });
+
+  it('should know if a position is occupied', function () {
+    var board = new Board();
+    board.pieces.push(new Piece(this, 0, 3)) ;
+    assert(board.isOccupied(0, 3));
+    assert(!board.isOccupied(0, 4));
   });
 
   xit('should know when a row is filled', function () {
   });
 
-  xit('should know when a row is filled', function () {
-  });
-
-  xit('should tell if a location is occupado', function () {
-  });
-
-
-  xit('should know when a row is filled', function () {
-  });
 
 });
