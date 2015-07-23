@@ -12,28 +12,16 @@ describe('The Shapes', function() {
     assert(new jShape());
   });
 
-
-  it('has Pieces', function () {
+  it('has 4 Pieces', function () {
     var j = new jShape();
     assert.equal(j.pieces.length, 4);
   });
 
   it('jShape has rotations', function () {
     var j = new jShape();
-    j.positions = j.positionRotations[1];
-    assert.equal(j.positions, "Testing");
-    // assert.equal(j.positionRotations, "Testing");
+    j.rotations.push("test");
+    assert(j.rotations);
+    assert.equal(j.rotations, "test");
   });
-
-  
-  // it('can tell all of its pieces to move down', function () {
-  //   var j = new jShape();
-  // });
-
-  // it('jShape can move down', function () {
-  //   var jShape = new Shape().jShape();
-  //   jShape.moveDown();
-  //   console.log(jShape.xCoords);
-  // });
 
 });
