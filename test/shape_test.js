@@ -1,8 +1,8 @@
 var assert = require('chai').assert;
-var Shape = require('../lib/shape');
+var Shape  = require('../lib/shape');
 var jShape = require('../lib/game-pieces/j-shape');
-var Board = require('../lib/board.js');
-var Piece = require('../lib/piece.js');
+var Board  = require('../lib/board.js');
+var Piece  = require('../lib/piece.js');
 
 describe('The Shapes', function() {
   
