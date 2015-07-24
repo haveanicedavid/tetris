@@ -1,6 +1,7 @@
 var assert = require('chai').assert;
 var Shape  = require('../lib/shape');
 var jShape = require('../lib/game-pieces/j-shape');
+var oShape = require('../lib/game-pieces/o-shape');
 var Board  = require('../lib/board.js');
 var Piece  = require('../lib/piece.js');
 
@@ -13,6 +14,7 @@ describe('The Shapes', function() {
   it('Has several types of shapes', function () {
     var b = new Board();
     assert(new jShape(b));
+    assert(new oShape(b));
   });
 
   it('has 4 Pieces', function () {
@@ -63,7 +65,6 @@ describe('The Shapes', function() {
     assert(b.isOccupied(4, 1));
     assert(b.isOccupied(4, 2));
     assert(b.isOccupied(3, 2));
-    
   });
 
   it('can move shapes right', function () {
@@ -82,7 +83,6 @@ describe('The Shapes', function() {
     assert(b.isOccupied(6, 1));
     assert(b.isOccupied(6, 2));
     assert(b.isOccupied(5, 2));
-    
   });
 
   it('can tell if a piece is locked', function () {
