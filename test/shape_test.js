@@ -1,6 +1,7 @@
 var assert = require('chai').assert;
 var Shape = require('../lib/shape');
 var jShape = require('../lib/game-pieces/j-shape');
+var Board = require('../lib/board.js');
 
 describe('The Shapes', function() {
   
@@ -9,19 +10,33 @@ describe('The Shapes', function() {
   });
 
   it('Has several types of shapes', function () {
-    assert(new jShape());
+    var b = new Board();
+    assert(new jShape(b));
   });
 
   it('has 4 Pieces', function () {
-    var j = new jShape();
+    var b = new Board();
+    var j = new jShape(b);
     assert.equal(j.pieces.length, 4);
   });
 
   it('jShape has rotations', function () {
-    var j = new jShape();
+    var b = new Board();
+    var j = new jShape(b);
     j.rotations.push("test");
     assert(j.rotations);
     assert.equal(j.rotations, "test");
+  });
+
+  it('can move shapes down', function () {
+    var b = new Board();
+    var j = new jShape(b);
+    // debugger;
+    assert(b.isOccupied(5, 0));
+    // assert(b.isOccupied(5, 1));
+    // assert(b.isOccupied(5, 2));
+    // assert(b.isOccupied(4, 2));
+    j.moveDown();
   });
 
 });

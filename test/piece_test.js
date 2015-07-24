@@ -5,7 +5,8 @@ var Board = require('../lib/board.js');
 describe('Game Pieces', function() {
  
   it('should exist', function () {
-    assert(new Piece());
+    var b = new Board();
+    assert(new Piece(b));
   });
 
   it('can move downward', function () {
