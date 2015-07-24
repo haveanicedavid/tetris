@@ -30,14 +30,22 @@ describe('Game Pieces', function() {
     
   });
 
-  it('cant move downward if the spot esta occupado', function () {
+  it('cant move downward if the spot esta occupado and locked', function () {
     var b  = new Board(); 
     var p  = new Piece(b, 0, 0);
     var p2 = new Piece(b, 0, 1);
+    p2.locked = true;
     b.pieces.push(p);
     b.pieces.push(p2);
+    assert.equal(p.yPos, 0);
     p.moveDown();
     assert.equal(p.yPos, 0);
+    p2.locked = false;
+    p.moveDown();
+    p2.moveDown();
+    assert.equal(p.yPos, 1);
+    assert.equal(p2.yPos, 2);
+    assert(!b.isOccupied(0, 0));
   });
 
   it('cant move downward if it is at the last spot on the board', function () {
