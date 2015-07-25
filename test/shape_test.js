@@ -86,4 +86,24 @@ describe('The Shapes', function() {
     assert(b.isLocked(5, 0));
   });
 
+  it('can only rotate if all of the new positions are empty', function () {
+    var b = new Board();
+    var j = new jShape(b);
+
+    var p1 = new Piece(b, 4, 2);
+    p1.locked = true;
+
+    assert(b.isOccupied(4, 0)); // Original positions
+    assert(b.isOccupied(4, 1));
+    assert(b.isOccupied(5, 1));
+    assert(b.isOccupied(6, 1));
+
+    j.rotate();
+
+    assert(b.isOccupied(4, 0)); // Original positions
+    assert(b.isOccupied(4, 1));
+    assert(b.isOccupied(5, 1));
+    assert(b.isOccupied(6, 1));
+  });
+
 });
