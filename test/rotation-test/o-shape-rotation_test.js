@@ -12,7 +12,7 @@ describe('O Shape Rotations', function() {
     assert(b.isOccupied(4, 1));
     assert(b.isOccupied(5, 0));
     o.rotate();
-    assert(!b.isOccupied(4, 0));
+    assert(b.isOccupied(4, 0));
     assert(b.isOccupied(5, 0));
     assert(b.isOccupied(4, 1));
     assert(b.isOccupied(5, 0));
