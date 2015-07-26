@@ -6,5 +6,5 @@ var Piece  = require('../lib/piece.js');
 var _      = require('underscore');
 
 describe('The game runner', function() {
-  
+ // Integration test? 
 });
