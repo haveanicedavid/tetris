@@ -6,14 +6,26 @@
   <link href="style.css" rel="stylesheet">
 </head>
 <body>
-  <h1>Tetris!</h1>
-  <h2 id="game-over"></h2>
-  <h3>Score:</h3><p><span id="score"></span>
+  <div>
+    <img src="./images/tetris-logo.png" class="logo"/>
+    <img src="./images/instructions.png" class="instructions"/>
+  </div>
+  <div class="outerbox">
   <canvas id="game"
           class="game-canvas"
-          width="200px"
-          height="400px"></canvas>
+          width="300px"
+          height="600px"></canvas>
 
+          <div>
+            <img src="./images/next.png" class="next"/>
+            <img src="./images/lshape-border.png" class="shape" />
+          </div>
+
+          <div class="score">
+            <img src="./images/score.png" class="score"/>
+            <img src="./images/1000.png" class="score-number"/>
+          </div>
+  </div>
   <script src="main.bundle.js"></script>
 </body>
 </html>
