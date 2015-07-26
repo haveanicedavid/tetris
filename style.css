@@ -1,5 +1,5 @@
 .game-canvas {
-  border: 1px dashed;
+  border: 1px solid;
   margin: auto;
   display: block;
 }
