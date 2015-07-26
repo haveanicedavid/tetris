@@ -71,10 +71,5 @@ describe('The board', function() {
     assert(!board.isOccupied(6,19));
   });
 
-  it('Can generate random shapes', function () {
-    var board = new Board();
-    
-  });
-
 
 });
