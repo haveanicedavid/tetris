@@ -16,13 +16,6 @@ body{
   width: 166px;
 }
 
-
-.score-number{
-  position: absolute;
-  top: 317px;
-  right: 21px;
-  width: 136px;
-}
 .instructions{
   position: absolute;
   top: 47px;
@@ -49,10 +42,13 @@ body{
 
 .shape {
   position: absolute;
-  top: 172px;
-  right: 32px;
+  top: 160px;
+  right: 22px;
 }
 
+.shape.hidden{
+  display:none;
+}
 .game-canvas {
   border: 3px solid #999;
   border-radius: 3px;
@@ -63,4 +59,22 @@ body{
   -moz-box-shadow: 3px 3px 5px 1px rgba(0,0,0,0.32);
   box-shadow: 3px 3px 5px 1px rgba(0,0,0,0.32);
   margin-left:52px;
+}
+
+#score{
+  color: #fff;
+  position: absolute;
+  top: 304px;
+  right: -5px;
+  width: 136px;
+  font-size: 40px;
+}
+
+
+#game-over{
+  position: absolute;
+  top: 165px;
+  color: #fff;
+  font-size: 100px;
+  text-shadow: 3px 3px 9px rgba(0, 0, 0, 0.55);
 }
