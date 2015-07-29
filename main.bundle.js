@@ -114,6 +114,9 @@
 
 	// This has a function within a loop, but i'm not sure how else to do it
 	Board.prototype.checkRows = function () {
+	  var newScore = 0;
+	  var scoreModifier = 1;
+
 	  for (var row = 0; row < this.rows; row++) {
 	    // Find all pieces within a given row
 	    var checkRow = _.filter(this.pieces, function (piece) {
@@ -123,59 +126,35 @@
 	    // Clear the row if it's full
 	    if (checkRow.length >= this.cols) {
 	      this.clearRow(row);
-	      this.score += 1;
-	      console.log(this.score);
-	      this.clearEmptyBelow(row);
+	      newScore += 1;
+	      scoreModifier += 0.75;
 	    }
 	  }
-	};
-
-	// This works for a row that's entirely empty, but not for hovering pieces
-	Board.prototype.clearEmptyBelow = function (rowNumber) {
-	  for (var row = rowNumber; row <= this.rows; row++) {
-	    var checkRow = _.filter(this.pieces, function (piece) {
-	      return piece.yPos === row;
-	    });
-
-	    if (checkRow.length === 0) {
-	      var piecesAboveEmptyRow = _.filter(this.pieces, function (piece) {
-	        return piece.yPos <= row;
-	      });
-	      _.each(piecesAboveEmptyRow, function (piece) {
-	        piece.moveDown();
-	      });
-	    }
-	  }
+	  this.score += newScore * Math.round(scoreModifier);
 	};
 
 	Board.prototype.clearRow = function (rowNumber) {
-	  // clear the row
-	  // These functions must be done separately to avoid trying to move blocks
-	  // Into locked positions
 	  this.pieces = _.reject(this.pieces, function (piece) {
 	    return piece.yPos === rowNumber;
 	  });
 
-	  // unlock the pieces
-	  _.each(this.pieces, function (piece) {
-	    piece.locked = false;
+	  var piecesToShiftDown = _.filter(this.pieces, function (piece) {
+	    return piece.yPos < rowNumber;
 	  });
 
-	  // move the pieces down
-	  _.each(this.pieces, function (piece) {
-	    piece.moveDown();
-	  });
-
-	  // Re-lock the pieces
-	  _.each(this.pieces, function (piece) {
-	    piece.locked = true;
+	  // Shift piece above cleared row downward
+	  _.each(piecesToShiftDown, function (piece) {
+	    piece.yPos += 1;
 	  });
 	};
 
-	Board.prototype.draw = function (canvas) {
+	Board.prototype.draw = function (context) {
 	  _.each(this.pieces, function (piece) {
-	    canvas.fillStyle = piece.color;
-	    canvas.fillRect(piece.xPos * 30, piece.yPos * 30, 30, 30);
+	    context.fillStyle = piece.color;
+	    context.fillRect(piece.xPos * 30 - 1, piece.yPos * 30 + 1, 30, 30);
+	    context.lineWidth = '0.5';
+	    context.strokeStyle = 'black';
+	    context.strokeRect(piece.xPos * 30 - 1, piece.yPos * 30 + 1, 30, 30);
 	  });
 	};
 
@@ -7388,10 +7367,10 @@
 
 	  this.name = 'iShape';
 	  this.pieces = {
-	    1: new Piece(board, 3, 0, '#141e99'),
-	    2: new Piece(board, 4, 0, '#141e99'),
-	    3: new Piece(board, 5, 0, '#141e99'),
-	    4: new Piece(board, 6, 0, '#141e99')
+	    1: new Piece(board, 3, 0, 'royalblue'),
+	    2: new Piece(board, 4, 0, 'royalblue'),
+	    3: new Piece(board, 5, 0, 'royalblue'),
+	    4: new Piece(board, 6, 0, 'royalblue')
 	  };
 
 	  // Defaults to the first set of offset rotations
@@ -7607,7 +7586,8 @@
 	var gameBoard = new Board();
 	var currentShape = gameBoard.generateShape();
 	var nextShape = gameBoard.nextShape;
-	var gameSpeed = 5;
+	var gameSpeed = 7;
+	var scoreModifier = 100;
 
 	$('#score').text(gameBoard.score);
 
@@ -7623,7 +7603,7 @@
 	    context.clearRect(0, 0, canvas.width, canvas.height);
 	    gameBoard.draw(context);
 
-	    // lock pieces when they hit the bottom
+	    // lock pieces when they bottom out
 	    if (!currentShape.canMoveDown()) {
 	      _.each(currentShape.pieces, function (piece) {
 	        piece.locked = true;
@@ -7663,24 +7643,34 @@
 	}
 
 	function updateScore() {
-	  $('#score').text(gameBoard.score * 150);
+	  $('#score').text(gameBoard.score * scoreModifier);
 	  updateGameSpeed();
 	}
 
+	// Modifiy game speed based on current score
 	function updateGameSpeed() {
 	  var score = gameBoard.score;
 	  if (score < 5) {
-	    gameSpeed = 5;
+	    gameSpeed = 7;
+	    scoreModifier = 100;
 	  } else if (score >= 5 && score < 10) {
+	    gameSpeed = 6;
+	    scoreModifier = 150;
+	  } else if (score >= 10 && score < 25) {
+	    gameSpeed = 5;
+	    scoreModifier = 200;
+	  } else if (score >= 25 && score < 50) {
+	    gameSpeed = 4.5;
+	    scoreModifier = 250;
+	  } else if (score >= 50 && score < 70) {
 	    gameSpeed = 4;
-	  } else if (score >= 10 && score < 15) {
+	    scoreModifier = 300;
+	  } else if (score >= 70 && score < 99) {
 	    gameSpeed = 3;
-	  } else if (score >= 15 && score < 20) {
-	    gameSpeed = 2.5;
-	  } else if (score >= 20 && score < 25) {
-	    gameSpeed = 2;
+	    scoreModifier = 300;
 	  } else {
-	    gameSpeed = 1;
+	    gameSpeed = 2.5;
+	    scoreModifier = 300;
 	  }
 	}
 
