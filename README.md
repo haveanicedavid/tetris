@@ -1,20 +1,5 @@
-# Game Time Starter Kit
+# JavaScript Tetris
 
-To install the dependencies:
+## An interactive Tetris-like game built using raw JavaScript and HTML5 Canvas.
 
-```
-npm install
-```
-
-To fire up a development server:
-
-```
-npm run server
-```
-
-
-To build the static files:
-
-```js
-npm run build
-```
+(Live Link)[git@github.com:haveanicedavid/socket-scrabble.git]
